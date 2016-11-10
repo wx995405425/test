@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+    <title></title>
+</head>
+<body>
+<a onclick="test()">csv读取测试</a>
+<p id="test"></p>
+</body>
+<script src="jquery-3.1.1.js"></script>
+<script>
+    function test() {
+        $.ajax({
+            type: "GET",
+            url: 'http://localhost:8888/test.csv',//路径和端口要与服务器一致, 可将test.csv替换为你的文件
+            headers: {
+                Accept: "text/plan;charset=gb2312"//关键代码，设置接收数据的编码
+            },
+            success: function (data) {
+                console.log(data);
+                $('#test').html(data);
+            }
+        })
+    }
+</script>
+</html>
